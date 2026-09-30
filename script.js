@@ -1,4 +1,177 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
+  const arabicTranslations = {
+    text: {
+      'head title': ['ملف أعمال رفال سروجي'],
+      '.brand': ['رفال سروجي'],
+      '.nav-menu a': ['المشاريع', 'الخبرات', 'المهارات', 'تواصل'],
+      '.eyebrow span': ['طالبة هندسة الحاسب والشبكات'],
+      '.display > span:first-child': ['رفال'],
+      '.name-last': ['سروجي'],
+      '.hero-education span': ['جامعة جدة', 'التخرج المتوقع: '],
+      '.hero-statement': ['شغوفة بالذكاء الاصطناعي وتطوير الويب وتصميم واجهات وتجربة المستخدم والطائرات المسيّرة، وبناء تجارب رقمية هادفة.'],
+      '.hero-subline': ['أستكشف التقنية من خلال الهندسة والتصميم والذكاء الاصطناعي والمشاريع الإبداعية.'],
+      '.focus-list li': ['الذكاء الاصطناعي', 'الويب', 'الواجهات والتجربة', 'الطائرات المسيّرة'],
+      '.hero-actions .hero-button': ['اطّلع على أعمالي', 'لنتواصل'],
+      '.hero-cv-actions .hero-button': ['عرض السيرة الذاتية'],
+      '.graphic-coordinate': ['أنظمة في حركة'],
+      '.graphic-index': ['الشكل ٠١'],
+      '.graphic-caption': ['الهندسة × الخيال'],
+      '.projects .section-kicker': ['أعمال مختارة'],
+      '.projects h2': ['أعمال مختارة'],
+      '.project-category': ['الذكاء الاصطناعي / التقنية التعليمية', 'تجربة المستخدم / أبحاث المستخدم', 'الويب / تصميم الواجهات والتجربة'],
+      '.project-meta h3': ['TAQWIAH', 'أبحاث تجربة المستخدم', 'ملف الأعمال الشخصي'],
+      '.visual-tag': ['الذكاء الاصطناعي / التعليم', 'الأبحاث / تجربة المستخدم', 'ملف الأعمال / الويب'],
+      '.browser-bar': ['ملاحظات البحث / تدفقات المستخدم', 'رفال سروجي / أعمال مختارة'],
+      '.project-detail p': [
+        'نظام تعليمي مدعوم بالذكاء الاصطناعي يحلل جوانب الضعف في تعلّم الطلاب ويساعد على تعزيزها عبر تجربة تعلّم أكثر تخصيصًا.',
+        'مشروع بحث للمستخدم يركّز على فهم احتياجات المستخدمين وسلوكياتهم ونقاط الألم والفرص المتاحة لتحسين تجربة المنتج عمومًا.',
+        'ملف أعمال شخصي تفاعلي صُمّم لعرض مشاريعي ومهاراتي وخبراتي واهتماماتي من خلال تجربة إبداعية وتقنية حديثة.'
+      ],
+      '.project-detail ul li': [
+        'الذكاء الاصطناعي', 'التعليم', 'تحدي أبطال الذكاء الاصطناعي', 'قائدة الفريق',
+        'احتياجات المستخدم', 'السلوكيات', 'نقاط الألم', 'الفرص',
+        'ملف أعمال', 'الويب', 'تصميم الواجهات والتجربة'
+      ],
+      '.project-detail a span:first-child': ['عرض المشروع', 'قراءة البحث', 'استكشف ملف الأعمال'],
+      '.experience .section-kicker': ['الخبرات'],
+      '.experience h2': ['الخبرات'],
+      '.timeline-year': ['الجامعة', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن'],
+      '.timeline-details h3': ['جامعة جدة', 'نادي طويق', 'نادي الذكاء الاصطناعي', 'SDC', 'MyTrip'],
+      '.timeline-role': ['عضوة — مسار الطائرات المسيّرة', 'عضوة في إدارة المشاريع', 'عضوة في المجتمع', 'متدربة في تصميم الواجهات والتجربة'],
+      '.timeline-details p': [
+        'طالبة هندسة حاسب.',
+        'عضوة في مسار الطائرات المسيّرة، أستكشف أنظمة الطائرات والعتاد والتقنيات الناشئة.',
+        'عضوة في فريق إدارة المشاريع، أساهم في تنظيم المبادرات التقنية وتنسيق المهام والعمل ضمن فريق.',
+        'عضوة نشطة في مجتمع SDC السعودي، أشارك في الأنشطة التقنية والمجتمعية.',
+        'متدربة أكتسب خبرة ومهارات عملية في تصميم الواجهات وتجربة المستخدم، وأسهم في مشاريع واقعية وأتعلم من خبراء المجال.'
+      ],
+      '.skillset .section-kicker': ['مجموعة المهارات'],
+      '.skillset h2': ['المهارات'],
+      '.skill-group h3': ['تقنية', 'الويب والمنتجات الرقمية', 'الذكاء الاصطناعي والتقنية', 'المهارات الشخصية'],
+      '.skill-list li': [
+        'Python', 'Java', 'C#', 'SQL', 'JavaScript', 'HTML / CSS',
+        'React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'تصميم الواجهات والتجربة', 'Figma',
+        'الذكاء الاصطناعي', 'RAG', 'نماذج الذكاء الاصطناعي الأولية', 'التفكير بالمنتج', 'الطائرات المسيّرة',
+        'العمل الجماعي', 'إدارة المشاريع', 'التواصل', 'حل المشكلات', 'الإبداع', 'القيادة', 'المرونة'
+      ],
+      '.lab .section-kicker': ['المختبر / التجارب'],
+      '.lab h2': ['المختبر / التجارب'],
+      '.lab-item > span': ['تجارب الذكاء الاصطناعي', 'أنظمة الطائرات المسيّرة', 'تجارب بصرية', 'الذكاء الاصطناعي / الواجهات'],
+      '.lab-item h3': [
+        'واجهات حوارية وأدوات ذكية.',
+        'استكشافات في الأنظمة الجوية والاستشعار التطبيقي.',
+        'مفاهيم واجهات متكررة ودراسات لتوجّه المنتجات.',
+        'حيث يلتقي الذكاء المفيد بالتفاعل المدروس.'
+      ],
+      '.statement .section-kicker': ['الهندسة / الخيال'],
+      '.statement-line': ['أبني عند نقطة التقاء'],
+      '.statement-emphasis': [{ html: 'التقنية <span>×</span> الإبداع' }],
+      '.cv-inner .section-kicker': ['السيرة الذاتية / الخلفية'],
+      '#cv-title': ['سيرتي الذاتية'],
+      '.cv-inner p': ['تعرّف على خلفيتي ومهاراتي ومشاريعي وخبراتي.'],
+      '.cv-actions .hero-button': ['عرض السيرة الذاتية'],
+      '.contact-wrap .section-kicker': ['تواصل'],
+      '.contact-wrap h2': [{ html: 'لنبنِ<br />شيئًا<br /><span>رائعًا.</span>' }],
+      '.contact-wrap h2 span': ['رائعًا.'],
+      '.contact-links a': ['LinkedIn', 'GitHub', 'البريد الإلكتروني'],
+      '.footer-inner span': ['© ٢٠٢٦ رفال سروجي', 'طالبة هندسة حاسب']
+    },
+    attributes: {
+      'meta[name="description"]': { content: 'رفال سروجي طالبة هندسة حاسب تبني مشاريع في الذكاء الاصطناعي وتجربة المستخدم وتجارب الويب والأنظمة التقنية.' },
+      '.language-switch': { 'aria-label': 'اللغة' },
+      '.site-header nav': { 'aria-label': 'التنقل الرئيسي' },
+      '.brand': { 'aria-label': 'الصفحة الرئيسية لرفال سروجي' },
+      '.menu-toggle': { 'aria-label': 'فتح القائمة' },
+      '.hero-aside': { 'aria-label': 'رسم تجريدي للشبكة' },
+      '.network-art': { 'aria-label': 'شبكة مدارية بعقد مترابطة' },
+      '.focus-list': { 'aria-label': 'مجالات التركيز' },
+      '.hero-cv-actions': { 'aria-label': 'السيرة الذاتية' },
+      '.projects .project-detail a': { 'aria-label': ['عرض مشروع تقوية', 'قراءة بحث تجربة المستخدم', 'استكشاف ملف الأعمال الشخصي'] },
+      '.statement': { 'aria-label': 'بيان التقنية الإبداعية' },
+      '.language-option[data-language="en"]': { 'aria-label': 'اختيار الإنجليزية' },
+      '.language-option[data-language="ar"]': { 'aria-label': 'اختيار العربية' }
+    }
+  };
+
+  const languageButtons = [...document.querySelectorAll('.language-option')];
+  const originalText = new WeakMap();
+  const originalAttributes = new WeakMap();
+  Object.keys(arabicTranslations.text).forEach((selector) => {
+    document.querySelectorAll(selector).forEach((element) => originalText.set(element, element.innerHTML));
+  });
+  Object.keys(arabicTranslations.attributes).forEach((selector) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      originalAttributes.set(element, Object.fromEntries(Object.keys(arabicTranslations.attributes[selector][0] || arabicTranslations.attributes[selector]).map((name) => [name, element.getAttribute(name)])));
+    });
+  });
+
+  const setText = (element, value) => {
+    if (value && typeof value === 'object' && !Array.isArray(value) && 'html' in value) {
+      element.innerHTML = value.html;
+    } else if (Array.isArray(value)) {
+      const textNodes = [...element.childNodes].filter((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+      value.forEach((part, index) => { if (textNodes[index]) textNodes[index].textContent = part; });
+    } else if (element.children.length) {
+      const textNode = [...element.childNodes].find((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+      if (textNode) textNode.textContent = value;
+    } else {
+      element.textContent = value;
+    }
+  };
+
+  const applyLanguage = (language, preservePosition = true) => {
+    if (language !== 'ar' && language !== 'en') language = 'en';
+    const anchor = preservePosition
+      ? [...document.querySelectorAll('main section')].find((section) => {
+        const bounds = section.getBoundingClientRect();
+        return bounds.top <= innerHeight * 0.5 && bounds.bottom >= innerHeight * 0.5;
+      }) || document.querySelector('main section')
+      : null;
+    const anchorTop = anchor?.getBoundingClientRect().top;
+    const scrollPosition = window.scrollY;
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    root.lang = language;
+    root.dir = language === 'ar' ? 'rtl' : 'ltr';
+    document.body.dataset.language = language;
+
+    Object.entries(arabicTranslations.text).forEach(([selector, values]) => {
+      document.querySelectorAll(selector).forEach((element, index) => {
+        if (language === 'en') element.innerHTML = originalText.get(element) ?? element.innerHTML;
+        else setText(element, values[index]);
+      });
+    });
+    Object.entries(arabicTranslations.attributes).forEach(([selector, attributes]) => {
+      document.querySelectorAll(selector).forEach((element, index) => {
+        Object.entries(attributes).forEach(([name, values]) => {
+          if (language === 'en') element.setAttribute(name, originalAttributes.get(element)?.[name] ?? '');
+          else element.setAttribute(name, Array.isArray(values) ? values[index] : values);
+        });
+      });
+    });
+    languageButtons.forEach((button) => {
+      const active = button.dataset.language === language;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    try { localStorage.setItem('portfolio-language', language); } catch { /* Storage may be unavailable in private browsing. */ }
+
+    requestAnimationFrame(() => {
+      const adjustedPosition = anchor && Number.isFinite(anchorTop)
+        ? window.scrollY + anchor.getBoundingClientRect().top - anchorTop
+        : scrollPosition;
+      window.scrollTo(0, adjustedPosition);
+      root.style.scrollBehavior = previousScrollBehavior;
+      if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+    });
+  };
+
+  languageButtons.forEach((button) => button.addEventListener('click', () => applyLanguage(button.dataset.language)));
+  let savedLanguage = 'en';
+  try { savedLanguage = localStorage.getItem('portfolio-language') || 'en'; } catch { /* Storage may be unavailable in private browsing. */ }
+  applyLanguage(savedLanguage, false);
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const gsapReady = window.gsap && window.ScrollTrigger;
   const menuToggle = document.querySelector('.menu-toggle');
