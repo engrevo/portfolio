@@ -35,15 +35,17 @@
       '.project-detail a span:first-child': ['عرض المشروع', 'قراءة البحث', 'استكشف ملف الأعمال'],
       '.experience .section-kicker': ['الخبرات'],
       '.experience h2': ['الخبرات'],
-      '.timeline-year': ['الجامعة', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن'],
-      '.timeline-details h3': ['جامعة جدة', 'نادي طويق', 'نادي الذكاء الاصطناعي', 'SDC', 'MyTrip'],
-      '.timeline-role': ['عضوة — مسار الطائرات المسيّرة', 'عضوة في إدارة المشاريع', 'عضوة في المجتمع', 'متدربة في تصميم الواجهات والتجربة'],
+      '.timeline-year': ['الجامعة', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن', '٢٠٢٦ — حتى الآن'],
+      '.timeline-details h3': ['جامعة جدة', 'نادي طويق', 'نادي الذكاء الاصطناعي', 'SDC', 'MyTrip', 'EG&VR', 'نادي MCC'],
+      '.timeline-role': ['عضوة — مسار الطائرات المسيّرة', 'عضوة في إدارة المشاريع', 'عضوة في المجتمع', 'متدربة في تصميم الواجهات والتجربة', 'عضوة في إدارة الفعاليات', 'عضوة في التخطيط والتنظيم'],
       '.timeline-details p': [
         'طالبة هندسة حاسب.',
         'عضوة في مسار الطائرات المسيّرة، أستكشف أنظمة الطائرات والعتاد والتقنيات الناشئة.',
         'عضوة في فريق إدارة المشاريع، أساهم في تنظيم المبادرات التقنية وتنسيق المهام والعمل ضمن فريق.',
         'عضوة نشطة في مجتمع SDC السعودي، أشارك في الأنشطة التقنية والمجتمعية.',
-        'متدربة أكتسب خبرة ومهارات عملية في تصميم الواجهات وتجربة المستخدم، وأسهم في مشاريع واقعية وأتعلم من خبراء المجال.'
+        'متدربة أكتسب خبرة ومهارات عملية في تصميم الواجهات وتجربة المستخدم، وأسهم في مشاريع واقعية وأتعلم من خبراء المجال.',
+        'عضوة في فريق إدارة الفعاليات، أساهم في تخطيط فعاليات النادي وأنشطته وتنظيمها وتنفيذها.',
+        'عضوة في فريق التخطيط والتنظيم، أساهم في التخطيط لأنشطة النادي وتنسيق تنفيذها.'
       ],
       '.skillset .section-kicker': ['مجموعة المهارات'],
       '.skillset h2': ['المهارات'],
@@ -369,7 +371,7 @@
       ...project.querySelectorAll('.project-detail ul, .project-detail a')
     ].filter(Boolean);
     const direction = index % 2 === 0 ? 1 : -1;
-    const travel = () => Math.min(80, Math.max(48, window.innerWidth * 0.055));
+    const travel = () => window.innerWidth <= 640 ? 0 : Math.min(64, Math.max(40, window.innerWidth * 0.045));
     const entryParallax = (target) => {
       if (target.matches('.project-number')) return direction * travel() * 0.25;
       if (target.matches('.project-visual')) return direction * -travel() * 0.25;
@@ -397,14 +399,12 @@
 
     projectMotion.fromTo(project, {
       x: () => direction * travel(),
-      scale: 0.97,
-      rotation: direction * 0.45,
+      scale: 0.985,
       autoAlpha: 0.94,
       transformOrigin: '50% 50%'
     }, {
       x: 0,
       scale: 1,
-      rotation: 0,
       autoAlpha: 1,
       duration: 0.52,
       ease: 'none'
@@ -418,8 +418,7 @@
       ease: 'none'
     }, 0).to(project, {
       x: () => direction * travel() * 0.4,
-      scale: 0.98,
-      rotation: direction * -0.15,
+      scale: 0.99,
       autoAlpha: 0.96,
       duration: 0.3,
       ease: 'none'
@@ -474,7 +473,7 @@
     scrollTrigger: { trigger: item, start: 'top 94%', end: 'top 68%', scrub: 0.5, invalidateOnRefresh: true }
   }));
 
-  const statementMotion = gsap.timeline({ scrollTrigger: { trigger: '.statement-inner', start: 'top 88%', end: 'bottom 32%', scrub: 0.7, invalidateOnRefresh: true } });
+  const statementMotion = gsap.timeline({ scrollTrigger: { trigger: '.statement-inner', start: 'top 88%', end: 'top 40%', scrub: 0.7, invalidateOnRefresh: true } });
   statementMotion.fromTo('.statement-line', { autoAlpha: 0, y: 24, clipPath: 'inset(0 0 100% 0)' }, { autoAlpha: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 0.38, ease: 'none', immediateRender: false })
     .fromTo('.statement-emphasis', { autoAlpha: 0, y: 60, scale: 0.96, clipPath: 'inset(0 0 100% 0)' }, { autoAlpha: 1, y: 0, scale: 1, clipPath: 'inset(0 0 0% 0)', duration: 0.62, ease: 'none', immediateRender: false }, '-=0.08');
   const cvMotion = gsap.timeline({ scrollTrigger: { trigger: '.cv-inner', start: 'top 88%', end: 'bottom 40%', scrub: 0.65, invalidateOnRefresh: true } });

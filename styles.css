@@ -623,3 +623,47 @@ body[data-language="ar"] .timeline-year { text-transform: none; }
   html[dir="rtl"] .contact::after { right: auto; left: -48%; }
   html[dir="rtl"] .contact::before { right: auto; left: -29%; }
 }
+
+/* Polish: legible display type, balanced grids, calmer motion */
+.projects .project-number { letter-spacing: -.04em; }
+.projects .project-meta h3 { letter-spacing: -.03em; }
+.timeline-details h3 { letter-spacing: -.02em; }
+.skill-group h3 { letter-spacing: -.01em; }
+.lab-item h3 { line-height: 1.05; letter-spacing: -.025em; }
+.statement-inner p { line-height: 1; letter-spacing: -.035em; }
+.contact-wrap h2 { line-height: .86; letter-spacing: -.045em; }
+html[dir="rtl"] .projects .project-number,
+html[dir="rtl"] .projects .project-meta h3,
+html[dir="rtl"] .timeline-details h3,
+html[dir="rtl"] .skill-group h3,
+html[dir="rtl"] .lab-item h3,
+html[dir="rtl"] .statement-inner p,
+html[dir="rtl"] .contact-wrap h2 { letter-spacing: 0; }
+html[dir="rtl"] .display { line-height: 1.22; }
+
+.hero-education span + span { padding-left: 0; padding-inline-start: 18px; border-left: 0; border-inline-start: 1px solid var(--line); }
+
+.timeline-item.is-active { transform: translateX(6px); }
+html[dir="rtl"] .timeline-item.is-active { transform: translateX(-6px); }
+
+/* Lab: a 2 × 2 checkerboard so no tile is left half-empty */
+.lab-item, .lab-item:nth-child(4), .lab-item:nth-child(5), .lab-item.lab-five { grid-column: span 3; }
+.lab-item:nth-child(1), .lab-item:nth-child(4) { color: var(--white); background: var(--navy); }
+.lab-item:nth-child(2), .lab-item:nth-child(3) { color: var(--ink); background: var(--heaven); }
+
+.cv-inner { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; }
+.cv-inner p { margin-top: 18px; }
+
+html[dir="rtl"] .browser-lines span:first-child { width: 100%; }
+
+@media (max-width: 640px) {
+  .lab-item, .lab-item:nth-child(4), .lab-item:nth-child(5), .lab-item.lab-five { grid-column: span 2; }
+  .timeline-item.is-active, html[dir="rtl"] .timeline-item.is-active { transform: none; }
+  .projects .browser-window { top: 58%; height: 190px; }
+  .cv-inner p { margin-top: 12px; }
+}
+@media (max-width: 720px) {
+  .cv-inner { flex-direction: column; align-items: flex-start; gap: 28px; }
+}
+.statement-inner .statement-emphasis { color: var(--blue); font-weight: 700; }
+.statement-inner .statement-emphasis span { color: var(--ink); }
