@@ -108,6 +108,7 @@
   });
 
   const setText = (element, value) => {
+    if (value === undefined || value === null) return;
     if (value && typeof value === 'object' && !Array.isArray(value) && 'html' in value) {
       element.innerHTML = value.html;
     } else if (Array.isArray(value)) {
